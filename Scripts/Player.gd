@@ -1,9 +1,6 @@
 extends RigidBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export var thrust = 50
 onready var sprite = $Sprite
 export var tether: NodePath = ""
@@ -17,7 +14,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#var cursor_pos = get_viewport().get_mouse_position()
 	var cursor_pos = get_global_mouse_position()
 	sprite.look_at(cursor_pos)
 	
@@ -29,7 +25,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("grapple"):
 		print(ray.get_collider())
 		if ray.is_colliding() == true:
-			#var target_pos = ray.get_collider().global_position
 			moveto(ray.get_collider(), grapple)
 			grapple.set_node_b(get_path_to(ray.get_collider()))
 			print(ray.get_collider().global_position)
