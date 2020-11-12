@@ -24,6 +24,7 @@ stiffness = 0.1
 position = Vector2( 408.814, 231.251 )
 can_sleep = false
 linear_velocity = Vector2( 0, 0 )
+thrust = 200
 tether = NodePath("../Rigid Tether")
 
 [node name="Asteroid" parent="." instance=ExtResource( 2 )]
