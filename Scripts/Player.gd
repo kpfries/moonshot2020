@@ -2,13 +2,13 @@ extends RigidBody2D
 
 
 export var thrust = 50
-onready var sprite = $Sprite
+onready var control = $PlayerControl
 export var tether: NodePath = ""
 var bullet_scn := preload("res://Scenes/Projectiles/Bullet.tscn")
 
-onready var ray = $Sprite/RayCast2D
+onready var ray = $PlayerControl/RayCast2D
 onready var grapple = get_node(tether)
-onready var gun = $Sprite/Gun
+onready var gun = $PlayerControl/Gun
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +18,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var cursor_pos = get_global_mouse_position()
-	sprite.look_at(cursor_pos)
+
+	control.look_at(cursor_pos)
 	
 	#Input Handling
 	if Input.is_action_pressed('ui_up'):
