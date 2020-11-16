@@ -21,8 +21,12 @@ rest_length = 1.0
 stiffness = 0.1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 408.814, 231.251 )
+position = Vector2( -2.13321, 2.77069 )
 can_sleep = false
 linear_velocity = Vector2( 0, 0 )
 thrust = 200
 tether = NodePath("../Rigid Tether")
+
+[node name="LevelBounds" type="Polygon2D" parent="."]
+visible = false
+polygon = PoolVector2Array( -10562.6, -6599.37, -471.506, -8321.4, 5865.55, -9251.29, 17162, -1502.18, 14028, 8829.98, -2813.46, 10586.4, -6670.8, 5971.42, -13524.5, 185.408 )
