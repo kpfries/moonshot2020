@@ -81,7 +81,7 @@ func _is_point_in_sample_region(sample: Vector2) -> bool:
 	return false
 
 func _init_vars() -> void:
-	randomize()
+	#randomize()
 	
 	# identify the type of shape and it's bounding rectangle and starting point
 	match typeof(_sample_region_shape):
