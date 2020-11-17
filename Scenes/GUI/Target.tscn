@@ -22,5 +22,6 @@ animations = [ {
 visible = false
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
+frame = 1
 speed_scale = 0.4
 playing = true
