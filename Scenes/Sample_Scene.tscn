@@ -25,10 +25,11 @@ z_index = 1
 can_sleep = false
 linear_velocity = Vector2( 0, 0 )
 thrust = 200
-tether = NodePath("../Rigid Tether")
+tether = NodePath("../Tether")
 
 [node name="LevelBounds" type="Polygon2D" parent="."]
 visible = false
 polygon = PoolVector2Array( -10562.6, -6599.37, -471.506, -8321.4, 5865.55, -9251.29, 17162, -1502.18, 14028, 8829.98, -2813.46, 10586.4, -6670.8, 5971.42, -13524.5, 185.408 )
 
 [node name="Target" parent="." instance=ExtResource( 2 )]
+frame = 1
