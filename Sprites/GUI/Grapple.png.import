@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grapple.png-d075bacab1f4364dd4f6391c2544d4fb.stex"
+path="res://.import/Grapple.png-b13c22c8c03db54d5f353f3539a7e0cf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Grapple.png"
-dest_files=[ "res://.import/Grapple.png-d075bacab1f4364dd4f6391c2544d4fb.stex" ]
+source_file="res://Sprites/GUI/Grapple.png"
+dest_files=[ "res://.import/Grapple.png-b13c22c8c03db54d5f353f3539a7e0cf.stex" ]
 
 [params]
 

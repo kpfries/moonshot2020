@@ -6,17 +6,19 @@ onready var control = $PlayerControl
 export var tether: NodePath = ""
 var bullet_scn := preload("res://Scenes/Projectiles/Bullet.tscn")
 
-onready var ray = $PlayerControl/RayCast2D
+var target_selection: Node
+
+onready var target_sprite =  $Target
+onready var rays = $PlayerControl/Rays.get_children()
 onready var grapple = get_node(tether)
 onready var gun = $PlayerControl/Gun
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	var cursor_pos = get_global_mouse_position()
 
 	control.look_at(cursor_pos)
@@ -27,10 +29,10 @@ func _process(delta):
 		self.apply_central_impulse(thruster_force)
 		
 	if Input.is_action_just_pressed("grapple"):
-		if ray.is_colliding() == true:
-			moveto(ray.get_collider(), grapple)
-			grapple.set_node_b(get_path_to(ray.get_collider()))
-			print(ray.get_collider().global_position)
+		var collide = aim_assist()
+		if collide != null:
+			moveto(collide, grapple)
+			grapple.set_node_b(get_path_to(collide))
 	if Input.is_action_just_released("grapple"):
 		if grapple.node_b:
 			grapple.set_node_b(NodePath(""))
@@ -42,6 +44,25 @@ func _process(delta):
 		bullet.global_transform = gun.global_transform
 		bullet.parent_speed = linear_velocity
 		get_tree().current_scene.add_child(bullet)
+		
+# warning-ignore:unused_argument
+func _process(delta):
+
+	pass
+	
+	#this should maybe be in a GUI controller later :/
+	var target = aim_assist()
+	if target != null:
+		target_sprite.global_position = target.global_position
+		target_sprite.global_rotation = 0
+
+		target_sprite.visible = true
+	else:
+		target_sprite.visible = false
+#
+#
+#	pass
+	
 			
 
 func moveto(target, current):
@@ -49,4 +70,15 @@ func moveto(target, current):
 	var current_pos = current.global_position
 	var translate_offset = target_pos - current_pos
 	current.global_translate(translate_offset)
+	
+func aim_assist():
+	for ray in rays:
+		if ray.is_colliding():
+			return ray.get_collider()
+
+	
+	
+	
+	
+	
 		

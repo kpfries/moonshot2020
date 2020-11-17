@@ -1,27 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Actors/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/GUI/Target.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/procedural_pop.gd" type="Script" id=4]
 
 [node name="Sample_Scene" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="Rigid Tether" type="PinJoint2D" parent="."]
-position = Vector2( 533.367, 232.554 )
 node_a = NodePath("../Player")
 disable_collision = false
 softness = 16.0
 
 [node name="Tether" type="DampedSpringJoint2D" parent="."]
-position = Vector2( 533.367, 232.554 )
 node_a = NodePath("../Player")
 disable_collision = false
-length = 20.0
-rest_length = 1.0
-stiffness = 0.1
+length = 10.0
+rest_length = 10.0
+stiffness = 10.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -2.13321, 2.77069 )
+z_index = 1
 can_sleep = false
 linear_velocity = Vector2( 0, 0 )
 thrust = 200
@@ -30,3 +30,5 @@ tether = NodePath("../Rigid Tether")
 [node name="LevelBounds" type="Polygon2D" parent="."]
 visible = false
 polygon = PoolVector2Array( -10562.6, -6599.37, -471.506, -8321.4, 5865.55, -9251.29, 17162, -1502.18, 14028, 8829.98, -2813.46, 10586.4, -6670.8, 5971.42, -13524.5, 185.408 )
+
+[node name="Target" parent="." instance=ExtResource( 2 )]
