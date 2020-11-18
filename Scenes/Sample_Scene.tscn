@@ -17,9 +17,8 @@ softness = 16.0
 [node name="Tether" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../Player")
 disable_collision = false
-length = 10.0
-rest_length = 10.0
-stiffness = 1.0
+length = 1.0
+stiffness = 0.1
 
 [node name="TetherLine" type="Line2D" parent="."]
 position = Vector2( -2.13321, 2.77069 )

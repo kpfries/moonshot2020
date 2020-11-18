@@ -56,7 +56,6 @@ func _physics_process(delta):
 		bullet.parent_speed = linear_velocity
 		get_tree().current_scene.add_child(bullet)
 		
-# warning-ignore:unused_argument
 func _process(delta):
 
 	pass
@@ -70,18 +69,14 @@ func _process(delta):
 		target_sprite.visible = true
 	else:
 		target_sprite.visible = false
-#
-#
-#	pass
-	
-			
+
 
 func moveto(target, current):
 	var target_pos = target.global_position
 	var current_pos = current.global_position
 	var translate_offset = target_pos - current_pos
 	current.global_translate(translate_offset)
-	
+
 func aim_assist():
 	for ray in rays:
 		if ray.is_colliding():
@@ -89,16 +84,22 @@ func aim_assist():
 
 func damage(dmg):
 	health -= dmg
+	if health <= 0:
+		die()
+	print(health)
 	#activate oneshot particle system for blood uwu
 	
+func die():
+	print('you lost')
+
 func draw_tether(grappled):
 	tether_line.global_position = Vector2(0,0)
 	tether_line.global_rotation = 0
 	tether_line.points = [global_position, grappled.global_position]
-	
-	
-	
-	
-	
-	
-		
+
+
+
+
+
+
+

@@ -7,7 +7,9 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 36.6866
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" groups=[
+"Player",
+]]
 position = Vector2( 554.17, 269.95 )
 mode = 2
 linear_velocity = Vector2( 10, 0 )
@@ -53,7 +55,7 @@ enabled = true
 cast_to = Vector2( 350, 0 )
 
 [node name="Gun" type="Node2D" parent="PlayerControl"]
-position = Vector2( 44.4974, 22.5136 )
+position = Vector2( 48, 0 )
 
 [node name="FireRate" type="Timer" parent="PlayerControl/Gun"]
 

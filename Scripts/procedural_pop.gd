@@ -10,7 +10,6 @@ var game_seed: String = ""
 
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.seed = game_seed.hash()
 	var points = pds.generate_points(density, level_bounds, 3, Vector2(0,0))
@@ -18,8 +17,4 @@ func _ready():
 		var asteroid = asteroid_scn.instance()
 		asteroid.position = point
 		get_tree().current_scene.add_child(asteroid)
-		pass
 
-
-#func _process(delta):
-#	pass
