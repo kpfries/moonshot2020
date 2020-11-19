@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 
-export var thrust = 50
+export var thrust = 5000
 export var health = 10
 export var tether: NodePath = ""
 export var tether_line_path: NodePath = ""
@@ -38,7 +38,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("grapple"):
 		collide = aim_assist()
 		if collide != null:
-			moveto(collide, grapple)
+			#moveto(collide, grapple)
+			moveto(collide, grapple )
 			grapple.set_node_b(get_path_to(collide))
 	if Input.is_action_pressed("grapple"):
 		if collide != null:

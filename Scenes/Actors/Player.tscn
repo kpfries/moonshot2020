@@ -67,3 +67,4 @@ texture = ExtResource( 1 )
 
 [node name="Target" parent="." instance=ExtResource( 3 )]
 visible = true
+frame = 0

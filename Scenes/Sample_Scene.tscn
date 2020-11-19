@@ -17,8 +17,9 @@ softness = 16.0
 [node name="Tether" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../Player")
 disable_collision = false
-length = 1.0
-stiffness = 0.1
+length = 100.0
+rest_length = 100.0
+stiffness = 1.0
 
 [node name="TetherLine" type="Line2D" parent="."]
 position = Vector2( -2.13321, 2.77069 )
@@ -31,7 +32,7 @@ mode = 0
 can_sleep = false
 linear_velocity = Vector2( 0, 0 )
 thrust = 200
-tether = NodePath("../Tether")
+tether = NodePath("../Rigid Tether")
 tether_line_path = NodePath("../TetherLine")
 
 [node name="LevelBounds" type="Polygon2D" parent="."]
@@ -39,7 +40,6 @@ visible = false
 polygon = PoolVector2Array( -10562.6, -6599.37, -471.506, -8321.4, 5865.55, -9251.29, 17162, -1502.18, 14028, 8829.98, -2813.46, 10586.4, -6670.8, 5971.42, -13524.5, 185.408 )
 
 [node name="Target" parent="." instance=ExtResource( 2 )]
-frame = 0
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 388.394, 0 )
