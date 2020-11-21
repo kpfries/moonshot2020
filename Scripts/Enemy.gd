@@ -22,6 +22,7 @@ func _process(delta):
 	apply_central_impulse(thruster_force)
 
 
+
 func find_player(player_dir):
 	var current_vec = player_dir
 	var p_direction_relative = (linear_velocity - player.linear_velocity).normalized()
