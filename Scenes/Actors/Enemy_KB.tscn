@@ -19,6 +19,12 @@ shape = SubResource( 1 )
 [node name="Gun" type="Node2D" parent="EnemyController"]
 position = Vector2( 48, 0 )
 
+[node name="FireFrequency" type="Timer" parent="EnemyController/Gun"]
+
+[node name="ReloadTimer" type="Timer" parent="EnemyController/Gun"]
+
 [node name="Sprite" type="Sprite" parent="EnemyController"]
 modulate = Color( 1, 0.329412, 0.329412, 1 )
 texture = ExtResource( 2 )
+[connection signal="timeout" from="EnemyController/Gun/FireFrequency" to="." method="_on_FireFrequency_timeout"]
+[connection signal="timeout" from="EnemyController/Gun/ReloadTimer" to="." method="_on_ReloadTimer_timeout"]

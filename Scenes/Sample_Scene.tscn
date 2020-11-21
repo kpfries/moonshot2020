@@ -40,6 +40,7 @@ visible = false
 polygon = PoolVector2Array( -10562.6, -6599.37, -471.506, -8321.4, 5865.55, -9251.29, 17162, -1502.18, 14028, 8829.98, -2813.46, 10586.4, -6670.8, 5971.42, -13524.5, 185.408 )
 
 [node name="Target" parent="." instance=ExtResource( 2 )]
+frame = 0
 
 [node name="GUI" parent="." instance=ExtResource( 5 )]
 
