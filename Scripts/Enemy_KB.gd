@@ -5,6 +5,7 @@ export var speed: int = 300
 export var targetdistance: int = 300
 export var detection_distance = 1200
 export var acceleration: float = 0.2
+export var bullet_spread: float = 0.1
 
 var velocity: Vector2 = Vector2(0,0)
 
@@ -12,9 +13,12 @@ export var bullet_speed: int
 export var clip_size: int = 10
 var bullets_remaining: int = 30
 var bullet_scn := preload("res://Scenes/Projectiles/Bullet.tscn")
+var bomb_scn := preload("res://Scenes/Projectiles/Bomb.tscn")
 onready var gun = $EnemyController/Gun
 onready var fire_frequency = $EnemyController/Gun/FireFrequency
 onready var ReloadTimer = $EnemyController/Gun/ReloadTimer
+onready var bomber = $EnemyController/Bomber
+onready var random = RandomNumberGenerator.new()
 
 onready var player = get_tree().get_nodes_in_group('Player')[0]
 
@@ -24,6 +28,7 @@ func _ready():
 	fire_frequency.start()
 	ReloadTimer.start()
 	ReloadTimer.paused = true
+	random.randomize()
 	pass # Replace with function body.
 
 
@@ -52,7 +57,9 @@ func chase():
 
 func shoot():
 	var bullet := bullet_scn.instance()
-	bullet.vector = Vector2(1,0).rotated(rotation)
+
+	var spread = random.randf_range(0.0, bullet_spread) - bullet_spread/2
+	bullet.vector = Vector2(1,0).rotated(rotation + spread)
 	bullet.global_transform = gun.global_transform
 	bullet.parent_speed = velocity
 	get_tree().current_scene.add_child(bullet)
@@ -82,3 +89,11 @@ func _on_ReloadTimer_timeout():
 	bullets_remaining = clip_size
 	ReloadTimer.start()
 	fire_frequency.paused = true
+
+
+#func _on_BombFrequency_timeout():
+#	var backwards = Vector2(1,0).rotated(rotation + PI) * random.randf_range(20, 40)
+#	var bomb := bomb_scn.instance()
+#	bomb.global_position = bomber.global_position
+#	bomb.linear_velocity = backwards
+#	get_tree().current_scene.add_child(bomb)

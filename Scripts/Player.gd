@@ -92,7 +92,7 @@ func damage(dmg):
 	
 func die():
 	print('you lost')
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
 
 func draw_tether(grappled):
 	tether_line.global_position = Vector2(0,0)

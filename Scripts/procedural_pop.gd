@@ -10,6 +10,7 @@ var game_seed: String = ""
 
 
 
+
 func _ready():
 	rng.seed = game_seed.hash()
 	var points = pds.generate_points(density, level_bounds, 3, Vector2(0,0))
