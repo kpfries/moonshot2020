@@ -1,7 +1,7 @@
 extends Area2D
 
 
-export var speed: float = 1000
+export var speed: float = 1800
 var vector = Vector2()
 var parent_speed: Vector2 = Vector2()
 var damage: int = 1

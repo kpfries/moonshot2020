@@ -58,6 +58,7 @@ cast_to = Vector2( 350, 0 )
 position = Vector2( 48, 0 )
 
 [node name="FireRate" type="Timer" parent="PlayerControl/Gun"]
+wait_time = 0.01
 
 [node name="ReloadTimer" type="Timer" parent="PlayerControl/Gun"]
 

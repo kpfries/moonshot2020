@@ -45,7 +45,7 @@ frame = 0
 [node name="GUI" parent="." instance=ExtResource( 5 )]
 
 [node name="Enemy_KB" parent="." instance=ExtResource( 3 )]
-position = Vector2( 379.524, 0.8909 )
+position = Vector2( 1349.92, -10.8816 )
 
 [node name="Enemy_KB2" parent="." instance=ExtResource( 3 )]
-position = Vector2( -514.05, 566.613 )
+position = Vector2( -981.588, 568.294 )

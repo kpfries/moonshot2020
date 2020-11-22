@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var health: int = 5
 export var speed: int = 300
 export var targetdistance: int = 300
-export var detection_distance = 700
+export var detection_distance = 1200
 export var acceleration: float = 0.2
 
 var velocity: Vector2 = Vector2(0,0)
@@ -22,6 +22,8 @@ onready var player = get_tree().get_nodes_in_group('Player')[0]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	fire_frequency.start()
+	ReloadTimer.start()
+	ReloadTimer.paused = true
 	pass # Replace with function body.
 
 
@@ -73,9 +75,10 @@ func _on_FireFrequency_timeout():
 		bullets_remaining -= 1
 		fire_frequency.start()
 	else:
-		ReloadTimer.start()
+		ReloadTimer.paused = false
 
 
 func _on_ReloadTimer_timeout():
 	bullets_remaining = clip_size
-	fire_frequency.start()
+	ReloadTimer.start()
+	fire_frequency.paused = true

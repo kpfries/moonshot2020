@@ -20,8 +20,10 @@ shape = SubResource( 1 )
 position = Vector2( 48, 0 )
 
 [node name="FireFrequency" type="Timer" parent="EnemyController/Gun"]
+wait_time = 0.1
 
 [node name="ReloadTimer" type="Timer" parent="EnemyController/Gun"]
+wait_time = 2.0
 
 [node name="Sprite" type="Sprite" parent="EnemyController"]
 modulate = Color( 1, 0.329412, 0.329412, 1 )
