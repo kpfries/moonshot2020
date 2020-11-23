@@ -5,7 +5,7 @@ export var speed: int = 300
 export var targetdistance: int = 300
 export var detection_distance = 1200
 export var acceleration: float = 0.2
-export var bullet_spread: float = 0.1
+export var bullet_spread: float = 0.2
 
 var velocity: Vector2 = Vector2(0,0)
 

@@ -39,5 +39,5 @@ func _on_ExplosionArea_body_entered(body):
 	if body.has_method("damage"):
 		body.damage(damage)
 	#play explosion animation
-	queue_free()
+	#queue_free()
 		
