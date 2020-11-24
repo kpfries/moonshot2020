@@ -7,6 +7,10 @@ export var tether: NodePath = ""
 export var tether_line_path: NodePath = ""
 var tether_line: Node
 
+export var bullet_speed: int
+export var clip_size: int = 20
+var bullets_remaining: int = 20
+
 var bullet_scn := preload("res://Scenes/Projectiles/Bullet.tscn")
 
 var target_selection: Node
@@ -18,11 +22,12 @@ onready var target_sprite =  $Target
 onready var rays = $PlayerControl/Rays.get_children()
 onready var grapple = get_node(tether)
 onready var gun = $PlayerControl/Gun
+onready var fire_frequency = $PlayerControl/Gun/FireRate
 
 
 func _ready():
 	tether_line = get_node(tether_line_path)
-	pass
+
 
 
 func _physics_process(delta):
@@ -50,12 +55,18 @@ func _physics_process(delta):
 			tether_line.points = Array()
 			
 	#eventually check if equipped weapon is repeating and spawn another bullet when elapsed time exceeds firerate but for now we're doing semi auto
+#	if Input.is_action_just_pressed("shoot"):
+#		var bullet := bullet_scn.instance()
+#		bullet.vector = position.direction_to(cursor_pos)
+#		bullet.global_transform = gun.global_transform
+#		bullet.parent_speed = linear_velocity
+#		get_tree().current_scene.add_child(bullet)
 	if Input.is_action_just_pressed("shoot"):
-		var bullet := bullet_scn.instance()
-		bullet.vector = position.direction_to(cursor_pos)
-		bullet.global_transform = gun.global_transform
-		bullet.parent_speed = linear_velocity
-		get_tree().current_scene.add_child(bullet)
+		shoot()
+		fire_frequency.paused = false
+		fire_frequency.start()
+	if Input.is_action_just_released("shoot"):
+		fire_frequency.paused = true
 		
 func _process(delta):
 
@@ -83,6 +94,13 @@ func aim_assist():
 		if ray.is_colliding():
 			return ray.get_collider()
 
+func shoot():
+	var bullet := bullet_scn.instance()
+	bullet.vector = position.direction_to(get_global_mouse_position())
+	bullet.global_transform = gun.global_transform
+	bullet.parent_speed = linear_velocity
+	get_tree().current_scene.add_child(bullet)
+
 func damage(dmg):
 	health -= dmg
 	if health <= 0:
@@ -100,8 +118,6 @@ func draw_tether(grappled):
 	tether_line.points = [global_position, grappled.global_position]
 
 
-
-
-
-
+func _on_FireRate_timeout():
+	shoot()
 

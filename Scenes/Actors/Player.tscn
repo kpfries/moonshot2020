@@ -59,9 +59,7 @@ cast_to = Vector2( 350, 0 )
 position = Vector2( 48, 0 )
 
 [node name="FireRate" type="Timer" parent="PlayerControl/Gun"]
-wait_time = 0.01
-
-[node name="ReloadTimer" type="Timer" parent="PlayerControl/Gun"]
+wait_time = 0.1
 
 [node name="Sprite" type="Sprite" parent="PlayerControl"]
 modulate = Color( 0.290196, 1, 0.211765, 1 )
@@ -74,3 +72,4 @@ color = Color( 0.941176, 0.878431, 0.768627, 1 )
 
 [node name="Target" parent="." instance=ExtResource( 3 )]
 visible = true
+[connection signal="timeout" from="PlayerControl/Gun/FireRate" to="." method="_on_FireRate_timeout"]
