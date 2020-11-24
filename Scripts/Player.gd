@@ -23,6 +23,7 @@ onready var rays = $PlayerControl/Rays.get_children()
 onready var grapple = get_node(tether)
 onready var gun = $PlayerControl/Gun
 onready var fire_frequency = $PlayerControl/Gun/FireRate
+onready var muzzle_flash = $PlayerControl/Gun/Muzzle_Flash
 
 
 func _ready():
@@ -65,8 +66,12 @@ func _physics_process(delta):
 		shoot()
 		fire_frequency.paused = false
 		fire_frequency.start()
+		muzzle_flash.playing = true
+		muzzle_flash.visible = true
 	if Input.is_action_just_released("shoot"):
 		fire_frequency.paused = true
+		muzzle_flash.playing = false
+		muzzle_flash.visible = false
 		
 func _process(delta):
 
