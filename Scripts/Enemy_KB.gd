@@ -13,7 +13,6 @@ export var bullet_speed: int
 export var clip_size: int = 10
 var bullets_remaining: int = 0
 var bullet_scn := preload("res://Scenes/Projectiles/Bullet.tscn")
-var bomb_scn := preload("res://Scenes/Projectiles/Bomb.tscn")
 onready var gun = $EnemyController/Gun
 onready var fire_frequency = $EnemyController/Gun/FireFrequency
 onready var ReloadTimer = $EnemyController/Gun/ReloadTimer
