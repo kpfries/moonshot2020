@@ -75,7 +75,7 @@ wait_time = 0.1
 [node name="Muzzle_Flash" type="AnimatedSprite" parent="PlayerControl/Gun"]
 visible = false
 modulate = Color( 0.929412, 0.807843, 0.486275, 1 )
-position = Vector2( 9.53528, -0.529785 )
+position = Vector2( 5, 0 )
 rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
@@ -93,4 +93,5 @@ energy = 1.5
 
 [node name="Target" parent="." instance=ExtResource( 3 )]
 visible = true
+frame = 0
 [connection signal="timeout" from="PlayerControl/Gun/FireRate" to="." method="_on_FireRate_timeout"]

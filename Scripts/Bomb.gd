@@ -1,7 +1,6 @@
 extends RigidBody2D
 
 export var damage: int = 5
-export var knockback: float = 1000
 
 var parent_vector = Vector2(0,0)
 onready var explosion_hb = $ExplosionArea
@@ -31,11 +30,6 @@ func _on_Bomb_body_entered(body):
 
 #on collision with explosion area
 func _on_ExplosionArea_body_entered(body):
-	var vector = (body.global_position - global_position).normalized() * knockback
-	if body is KinematicBody2D:
-		body.velocity += vector
-	elif body is RigidBody2D:
-		body.apply_central_impulse(vector)
 	if body.has_method("damage"):
 		body.damage(damage)
 	#play explosion animation

@@ -32,7 +32,7 @@ position = Vector2( -2.13321, 2.77069 )
 width = 4.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 947.132, 599.633 )
+position = Vector2( 1.04163, -6.75385 )
 z_index = 1
 mode = 0
 can_sleep = false
@@ -46,6 +46,7 @@ visible = false
 polygon = PoolVector2Array( -10562.6, -6599.37, -471.506, -8321.4, 5865.55, -9251.29, 17162, -1502.18, 14028, 8829.98, -2813.46, 10586.4, -6670.8, 5971.42, -13524.5, 185.408 )
 
 [node name="Target" parent="." instance=ExtResource( 2 )]
+frame = 0
 
 [node name="GUI" parent="." instance=ExtResource( 5 )]
 

@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends "res://Scripts/Enemy.gd"
 
 export var health: int = 5
 export var speed: int = 300
@@ -13,6 +13,7 @@ export var bullet_speed: int
 export var clip_size: int = 10
 var bullets_remaining: int = 0
 var bullet_scn := preload("res://Scenes/Projectiles/Bullet.tscn")
+var enemy_dead := preload("res://Scenes/Actors/Enemy_Dead.tscn")
 onready var gun = $EnemyController/Gun
 onready var fire_frequency = $EnemyController/Gun/FireFrequency
 onready var ReloadTimer = $EnemyController/Gun/ReloadTimer
@@ -68,7 +69,10 @@ func damage(dmg):
 	if health < 1:
 		die()
 func die():
-	#replace with rb corpse with linear_velocity set to velocity
+	var corpse = enemy_dead.instance()
+	corpse.linear_velocity = velocity
+	corpse.global_position = global_position
+	get_tree().current_scene.add_child(corpse)
 	print('gottem')
 	queue_free()
 
