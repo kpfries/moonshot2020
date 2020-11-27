@@ -3,24 +3,24 @@
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Bomb.gd" type="Script" id=2]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 radius = 10.1361
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 131.029
 
 [node name="Bomb" type="RigidBody2D"]
 script = ExtResource( 2 )
 
 [node name="ExplosionCollision" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="ExplosionArea" type="Area2D" parent="."]
 monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="ExplosionSprite" type="Sprite" parent="."]
 

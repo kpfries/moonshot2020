@@ -5,11 +5,14 @@
 [ext_resource path="res://Scenes/Actors/Enemy_KB.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/procedural_pop.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/GUI/Primary_Gui.tscn" type="PackedScene" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Backgrounds/backgorund1.png" type="Texture" id=6]
 
 [node name="Sample_Scene" type="Node2D"]
 position = Vector2( 3.5636, -1.7818 )
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_vertical_guides_": [ -1461.08 ]
+}
 density = 600
 
 [node name="Rigid Tether" type="PinJoint2D" parent="."]
@@ -29,7 +32,7 @@ position = Vector2( -2.13321, 2.77069 )
 width = 4.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -2.13321, 2.77069 )
+position = Vector2( 947.132, 599.633 )
 z_index = 1
 mode = 0
 can_sleep = false
@@ -43,19 +46,20 @@ visible = false
 polygon = PoolVector2Array( -10562.6, -6599.37, -471.506, -8321.4, 5865.55, -9251.29, 17162, -1502.18, 14028, 8829.98, -2813.46, 10586.4, -6670.8, 5971.42, -13524.5, 185.408 )
 
 [node name="Target" parent="." instance=ExtResource( 2 )]
-frame = 0
 
 [node name="GUI" parent="." instance=ExtResource( 5 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="GUI"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="GUI/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+
+[node name="Sprite" type="Sprite" parent="GUI/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 931.487, 563.435 )
+texture = ExtResource( 6 )
 
 [node name="Enemy_KB" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1349.92, -10.8816 )
 
 [node name="Enemy_KB2" parent="." instance=ExtResource( 3 )]
 position = Vector2( -981.588, 568.294 )
-
-[node name="Background" type="Sprite" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 2650.43, -374.562 )
-scale = Vector2( 469.479, 377.616 )
-z_index = -1
-texture = ExtResource( 6 )
