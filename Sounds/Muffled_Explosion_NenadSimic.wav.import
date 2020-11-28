@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Muffled_Explosion_NenadSimic.wav-23d50e218ea66e6ba3ad314af39a938a.sample"
+
+[deps]
+
+source_file="res://Sounds/Muffled_Explosion_NenadSimic.wav"
+dest_files=[ "res://.import/Muffled_Explosion_NenadSimic.wav-23d50e218ea66e6ba3ad314af39a938a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0
