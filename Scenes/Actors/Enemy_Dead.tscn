@@ -21,13 +21,13 @@ _data = [ Vector2( 0.601266, 0.340912 ), 0.0, 152.614, 0, 0, Vector2( 0.987342, 
 [sub_resource type="CurveTexture" id=5]
 curve = SubResource( 4 )
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0.00632912, 0.344318 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=8]
-curve = SubResource( 7 )
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=8]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
@@ -38,7 +38,7 @@ orbit_velocity_random = 0.0
 damping = 50.57
 damping_curve = SubResource( 5 )
 scale = 46.98
-scale_curve = SubResource( 8 )
+scale_curve = SubResource( 7 )
 color_ramp = SubResource( 3 )
 
 [sub_resource type="ParticlesMaterial" id=9]
@@ -53,7 +53,7 @@ orbit_velocity_random = 0.0
 damping = 50.57
 damping_curve = SubResource( 5 )
 scale = 46.98
-scale_curve = SubResource( 8 )
+scale_curve = SubResource( 7 )
 color_ramp = SubResource( 3 )
 
 [node name="Enemy_Dead" type="RigidBody2D"]
@@ -71,15 +71,15 @@ emitting = false
 amount = 96
 one_shot = true
 explosiveness = 0.62
-visibility_rect = Rect2( -100, -100, 200, 200 )
-process_material = SubResource( 6 )
+local_coords = false
+process_material = SubResource( 8 )
 
 [node name="Particles2D2" type="Particles2D" parent="."]
 emitting = false
 amount = 64
 one_shot = true
 explosiveness = 0.62
-visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
 process_material = SubResource( 9 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]

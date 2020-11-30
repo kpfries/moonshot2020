@@ -24,6 +24,7 @@ onready var grapple = get_node(tether)
 onready var gun = $PlayerControl/Gun
 onready var fire_frequency = $PlayerControl/Gun/FireRate
 onready var muzzle_flash = $PlayerControl/Gun/Muzzle_Flash
+onready var shot_sound = $gunshotSound
 
 
 func _ready():
@@ -55,13 +56,6 @@ func _physics_process(delta):
 			grapple.set_node_b(NodePath(""))
 			tether_line.points = Array()
 			
-	#eventually check if equipped weapon is repeating and spawn another bullet when elapsed time exceeds firerate but for now we're doing semi auto
-#	if Input.is_action_just_pressed("shoot"):
-#		var bullet := bullet_scn.instance()
-#		bullet.vector = position.direction_to(cursor_pos)
-#		bullet.global_transform = gun.global_transform
-#		bullet.parent_speed = linear_velocity
-#		get_tree().current_scene.add_child(bullet)
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 		fire_frequency.paused = false
@@ -105,6 +99,7 @@ func shoot():
 	bullet.global_transform = gun.global_transform
 	bullet.parent_speed = linear_velocity
 	get_tree().current_scene.add_child(bullet)
+	shot_sound.play()
 
 func damage(dmg):
 	health -= dmg
