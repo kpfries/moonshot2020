@@ -62,8 +62,5 @@ texture = ExtResource( 6 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="GUI/ParallaxBackground"]
 
-[node name="Sprite" type="Sprite" parent="GUI/ParallaxBackground/ParallaxLayer2"]
-
 [node name="Boss1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 9815.12, 6880.22 )
 health = 50

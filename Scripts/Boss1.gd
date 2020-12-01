@@ -42,7 +42,8 @@ func gun_handler(guns):
 		gun.look_at(player.global_position)
 
 func die():
-	queue_free()
+
+	get_tree().change_scene("res://Scenes/GUI/Menu.tscn")
 
 
 #Gun Timing

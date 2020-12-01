@@ -35,6 +35,7 @@ func _ready():
 
 
 
+
 func _physics_process(delta):
 	var cursor_pos = get_global_mouse_position()
 
@@ -120,6 +121,8 @@ func damage(dmg):
 func die():
 	print('you lost')
 	#get_tree().reload_current_scene()
+	get_tree().change_scene("res://Scenes/GUI/Menu.tscn")
+
 
 func draw_tether(grappled):
 	tether_line.global_position = Vector2(0,0)
