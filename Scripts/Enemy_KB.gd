@@ -43,6 +43,7 @@ func die():
 	corpse.global_position = global_position
 	get_tree().current_scene.add_child(corpse)
 	print('gottem')
+	player.waypoint_anim.play("Fade")
 	queue_free()
 
 

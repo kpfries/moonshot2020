@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/Actors/Boss1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/procedural_pop.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/GUI/Primary_Gui.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Sprites/Backgrounds/backgorund1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Backgrounds/Background_Gas_Giant.png" type="Texture" id=6]
 
 [node name="Sample_Scene" type="Node2D"]
 position = Vector2( 3.5636, -1.7818 )
@@ -37,6 +37,7 @@ mode = 0
 can_sleep = false
 linear_velocity = Vector2( 0, 0 )
 thrust = 200
+health = 20
 tether = NodePath("../Rigid Tether")
 tether_line_path = NodePath("../TetherLine")
 
@@ -46,6 +47,7 @@ position = Vector2( 42.7148, -21.3594 )
 polygon = PoolVector2Array( -10570.5, -7397.04, -41.2823, -8721.19, 12495.5, -7674.68, 15998.2, -50.0776, 13947.8, 9688.91, 129.577, 10607.3, -10378.3, 8514.25, -13524.5, 185.408 )
 
 [node name="Target" parent="." instance=ExtResource( 2 )]
+frame = 0
 
 [node name="GUI" parent="." instance=ExtResource( 5 )]
 
@@ -58,5 +60,10 @@ motion_scale = Vector2( 0.1, 0.1 )
 position = Vector2( 931.487, 563.435 )
 texture = ExtResource( 6 )
 
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="GUI/ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="GUI/ParallaxBackground/ParallaxLayer2"]
+
 [node name="Boss1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 492.332, 165.3 )
+position = Vector2( 9815.12, 6880.22 )
+health = 50

@@ -25,6 +25,9 @@ onready var gun = $PlayerControl/Gun
 onready var fire_frequency = $PlayerControl/Gun/FireRate
 onready var muzzle_flash = $PlayerControl/Gun/Muzzle_Flash
 onready var shot_sound = $gunshotSound
+onready var waypoint = $waypoint
+onready var waypoint_anim = $waypoint/Sprite/AnimationPlayer
+onready var boss = get_tree().get_nodes_in_group('Boss')[0]
 
 
 func _ready():
@@ -41,6 +44,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed('ui_up'):
 		var thruster_force = thrust * delta * self.position.direction_to(cursor_pos)
 		self.apply_central_impulse(thruster_force)
+
 		
 	if Input.is_action_just_pressed("grapple"):
 		collide = aim_assist()
@@ -62,13 +66,18 @@ func _physics_process(delta):
 		fire_frequency.start()
 		muzzle_flash.playing = true
 		muzzle_flash.visible = true
+		
+		#waypoint_anim.play("Fade")
+
+		
 	if Input.is_action_just_released("shoot"):
 		fire_frequency.paused = true
 		muzzle_flash.playing = false
 		muzzle_flash.visible = false
 		
 func _process(delta):
-
+	if boss:
+		waypoint.look_at(boss.global_position)
 	pass
 	
 	#this should maybe be in a GUI controller later :/

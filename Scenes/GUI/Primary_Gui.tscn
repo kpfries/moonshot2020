@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Gui.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/GUI/Health_Bracket.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/GUI/Health_Bar.png" type="Texture" id=3]
 
 [node name="GUI" type="CanvasLayer"]
 
@@ -22,12 +23,14 @@ __meta__ = {
 }
 
 [node name="TextureProgress" type="TextureProgress" parent="Gui_Control"]
-margin_left = 1000.67
-margin_top = 820.715
-margin_right = 1040.67
-margin_bottom = 860.715
+margin_left = 48.0
+margin_top = 952.0
+margin_right = 560.0
+margin_bottom = 1076.0
+rect_scale = Vector2( 0.5, 0.5 )
 value = 50.0
-texture_progress = ExtResource( 2 )
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

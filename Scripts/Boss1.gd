@@ -41,7 +41,8 @@ func gun_handler(guns):
 	for gun in guns:
 		gun.look_at(player.global_position)
 
-
+func die():
+	queue_free()
 
 
 #Gun Timing

@@ -2,6 +2,8 @@ extends "res://Scripts/Enemy.gd"
 
 export var knockback: int = 600
 
+onready var enemy_dead := preload("res://Scenes/Actors/Enemy_Melee_Dead.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = 4
@@ -24,6 +26,12 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 
 func die():
+	var corpse = enemy_dead.instance()
+	corpse.linear_velocity = velocity
+	corpse.global_position = global_position
+	get_tree().current_scene.add_child(corpse)
+	print('gottem')
+	player.waypoint_anim.play("Fade")
 	queue_free()
 
 
