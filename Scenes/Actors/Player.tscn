@@ -94,6 +94,7 @@ energy = 1.5
 
 [node name="Target" parent="." instance=ExtResource( 3 )]
 visible = true
+frame = 0
 
 [node name="gunshotSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )

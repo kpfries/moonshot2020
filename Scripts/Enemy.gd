@@ -42,7 +42,7 @@ func shoot(gun):
 	var bullet := bullet_scn.instance()
 
 	var spread = random.randf_range(0.0, bullet_spread) - bullet_spread/2
-	bullet.vector = Vector2(1,0).rotated(rotation + spread)
+	bullet.vector = Vector2(1,0).rotated(gun.global_rotation + spread)
 	bullet.global_transform = gun.global_transform
 	bullet.parent_speed = velocity
 	get_tree().current_scene.add_child(bullet)

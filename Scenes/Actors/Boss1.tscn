@@ -8,11 +8,40 @@ radius = 53.4824
 
 [node name="Boss1" type="KinematicBody2D"]
 script = ExtResource( 2 )
+speed = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="EnemyController" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="EnemyController"]
 modulate = Color( 0.890196, 0.443137, 0.172549, 1 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
+
+[node name="Guns" type="Node2D" parent="EnemyController"]
+
+[node name="Gun1" type="Node2D" parent="EnemyController/Guns"]
+position = Vector2( 64, -64 )
+
+[node name="FireFrequencyG1" type="Timer" parent="EnemyController/Guns/Gun1"]
+wait_time = 0.1
+
+[node name="ReloadTimerG1" type="Timer" parent="EnemyController/Guns/Gun1"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Gun2" type="Node2D" parent="EnemyController/Guns"]
+position = Vector2( 64, 64 )
+
+[node name="FireFrequencyG2" type="Timer" parent="EnemyController/Guns/Gun2"]
+wait_time = 0.1
+
+[node name="ReloadTimerG2" type="Timer" parent="EnemyController/Guns/Gun2"]
+wait_time = 4.0
+one_shot = true
+[connection signal="timeout" from="EnemyController/Guns/Gun1/FireFrequencyG1" to="." method="_on_FireFrequencyG1_timeout"]
+[connection signal="timeout" from="EnemyController/Guns/Gun1/ReloadTimerG1" to="." method="_on_ReloadTimerG1_timeout"]
+[connection signal="timeout" from="EnemyController/Guns/Gun2/FireFrequencyG2" to="." method="_on_FireFrequencyG2_timeout"]
+[connection signal="timeout" from="EnemyController/Guns/Gun2/ReloadTimerG2" to="." method="_on_ReloadTimerG2_timeout"]
